@@ -20,7 +20,7 @@ using namespace std;
  *
  * return: no return values
  ************************************************************************************************************/
-/*void readImage(char filename[], int image[700][700], int &col, int &row, int &maxVal, char p_val[]){
+void readImage(char filename[], int image[700][700], int &col, int &row, int &maxVal, char p_val[]){
     
     ifstream myImage;
     myImage.open(filename);
@@ -34,14 +34,24 @@ using namespace std;
     myImage >> maxVal;
 	
 	// TODO: Read contents from file into image array
-    
+  for(int i = 0; i < row; i++){
+    for(int j = 0; j < col; j++){
+        myImage >> image[i][j];
+    }
+  } 
 	
 	// TODO: Display the image array when the input file reading is "sample_image.pgm"
-
+  if(filename == "sample_image.pgm"){
+   for(int i = 0; i < row; i++){
+      for(int j = 0; j < col; j++){
+        cout << image[i][j];
+    }
+  } 
+  }
     
     myImage.close();
 }
-*/
+
 /***************************************************************************************************************
  * saves an image to a given file, the file should contain data in the following format:
  *              string_representing_an_identifier
