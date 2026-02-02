@@ -1,3 +1,4 @@
+//austin vu
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -19,7 +20,7 @@ using namespace std;
  *
  * return: no return values
  ************************************************************************************************************/
-void readImage(char filename[], int image[700][700], int &col, int &row, int &maxVal, char p_val[]){
+/*void readImage(char filename[], int image[700][700], int &col, int &row, int &maxVal, char p_val[]){
     
     ifstream myImage;
     myImage.open(filename);
@@ -40,7 +41,7 @@ void readImage(char filename[], int image[700][700], int &col, int &row, int &ma
     
     myImage.close();
 }
-
+*/
 /***************************************************************************************************************
  * saves an image to a given file, the file should contain data in the following format:
  *              string_representing_an_identifier
@@ -58,7 +59,7 @@ void readImage(char filename[], int image[700][700], int &col, int &row, int &ma
  *
  * return: no return values
  ************************************************************************************************************/
-void saveImage(char filename[], int pepper[700][700], int col, int row, int maxVal, char p_val[]){
+/*void saveImage(char filename[], int pepper[700][700], int col, int row, int maxVal, char p_val[]){
     
     ofstream myImage;
     myImage.open (filename);
@@ -81,8 +82,8 @@ void saveImage(char filename[], int pepper[700][700], int col, int row, int maxV
     myImage.close();
 
 }
-
-void sumArray(int image[700][700], int sum[][700], int row, int col){
+*/
+/*void sumArray(int image[700][700], int sum[][700], int row, int col){
 
 }
 
@@ -94,10 +95,18 @@ void averageArray(int sum[700][700], double avg[][700], int col, int row){
 void pepperImage(int image[700][700], double avg[][700], int col, int row){
     
 }
-
+*/
 int main () {
-    
+   
+    char filename[];
+    int image[700][700];
+    int col;
+    int row;
+    int maxVal;
+    char p_val[]; 
     // TODO: Read the image.pgm
+    readImage(filename, image, col, row, maxVal, p_val);
+
     
     // TODO: Find the sum of pixels
     
@@ -105,7 +114,7 @@ int main () {
     
     // TODO: Pepper the image
     
-    // TODO: Save the resulting image to peppered_image.pgm
+    // TODO: S;ave the resulting image to peppered_image.pgm
     
     return 0;
 }
