@@ -98,16 +98,16 @@ void readImage(char filename[700], int image[700][700], int &col, int &row, int 
 /*void sumArray(int image[700][700], int sum[][700], int row, int col){
 
 }
-
-
-void averageArray(int sum[700][700], double avg[][700], int col, int row){
-
-}
-
-void pepperImage(int image[700][700], double avg[][700], int col, int row){
-    
-}
 */
+
+/*void averageArray(int sum[700][700], double avg[][700], int col, int row){
+
+}*/
+
+/*void pepperImage(int image[700][700], double avg[][700], int col, int row){
+    
+}*/
+
 int main () {
    
     char filename[700]; //added size
@@ -123,6 +123,7 @@ int main () {
 
     
     // TODO: Find the sum of pixels
+    sumArray(image, sum, row, col);
     
     // TODO: Find the average of pixels
     
