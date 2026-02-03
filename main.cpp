@@ -1,6 +1,7 @@
 //austin vu
 #include <iostream>
 #include <fstream>
+#include <cstring> //for strcmp
 using namespace std;
 
 /************************************************************************************************************
@@ -20,7 +21,7 @@ using namespace std;
  *
  * return: no return values
  ************************************************************************************************************/
-void readImage(char filename[], int image[700][700], int &col, int &row, int &maxVal, char p_val[]){
+void readImage(char filename[700], int image[700][700], int &col, int &row, int &maxVal, char p_val[700]){
     
     ifstream myImage;
     myImage.open(filename);
@@ -41,11 +42,12 @@ void readImage(char filename[], int image[700][700], int &col, int &row, int &ma
   } 
 	
 	// TODO: Display the image array when the input file reading is "sample_image.pgm"
-  if(filename == "sample_image.pgm"){
+  if(strcmp(filename, "sample_image.pgm") == 0){ //strcmp compares filename with string (from C)
    for(int i = 0; i < row; i++){
       for(int j = 0; j < col; j++){
-        cout << image[i][j];
+        cout << image[i][j] << " ";
     }
+   std::cout << std::endl;
   } 
   }
     
@@ -108,12 +110,14 @@ void pepperImage(int image[700][700], double avg[][700], int col, int row){
 */
 int main () {
    
-    char filename[];
+    char filename[700]; //added size
     int image[700][700];
     int col;
     int row;
     int maxVal;
-    char p_val[]; 
+    char p_val[700]; //added size
+    std::cout << "What is the name of the file (include file extension too.)" << std::endl;
+    std::cin >> filename;       //grab filename for future use
     // TODO: Read the image.pgm
     readImage(filename, image, col, row, maxVal, p_val);
 
@@ -124,7 +128,7 @@ int main () {
     
     // TODO: Pepper the image
     
-    // TODO: S;ave the resulting image to peppered_image.pgm
+    // TODO: Save the resulting image to peppered_image.pgm
     
     return 0;
 }
