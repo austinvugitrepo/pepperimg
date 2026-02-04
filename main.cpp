@@ -95,10 +95,16 @@ void readImage(char filename[700], int image[700][700], int &col, int &row, int 
 
 }
 */
-/*void sumArray(int image[700][700], int sum[][700], int row, int col){
+void sumArray(int image[700][700], int sum[][700], int row, int col){
+  for(int i = 0; i < row; i++){ //tracking row
+      for(int j = 0; j < col; j++){ //tracking element
+        cout << image[i][j] << " ";
+    }
+   std::cout << std::endl;
+  } 
 
 }
-*/
+
 
 /*void averageArray(int sum[700][700], double avg[][700], int col, int row){
 
@@ -116,6 +122,7 @@ int main () {
     int row;
     int maxVal;
     char p_val[700]; //added size
+    int sum[700][700]; //added size
     std::cout << "What is the name of the file (include file extension too.)" << std::endl;
     std::cin >> filename;       //grab filename for future use
     // TODO: Read the image.pgm
