@@ -98,11 +98,25 @@ void readImage(char filename[700], int image[700][700], int &col, int &row, int 
 void sumArray(int image[700][700], int sum[][700], int row, int col){
   for(int i = 0; i < row; i++){ //tracking row
       for(int j = 0; j < col; j++){ //tracking element
-        cout << image[i][j] << " ";
-    }
-   std::cout << std::endl;
+        int temptotal = 0; // temp total to help with summing
+          // if left does not go out of bounds (not further then element 0)
+        if(j - 1 >= 0) {
+           temptotal += image[i][j - 1];
+        } // if right does not go out of bounds (not further then the array size)
+        else if(j + 1 < col) {
+           temptotal += image[i][j + 1];
+        } // if up does not go out of bounds
+        else if(i - 1 >= 0){
+          temptotal += image[i - 1][j];
+        } // if down does not go out bounds
+        else if(i + 1 < row){
+         temptotal += image[i + 1][j];
+        } //mirror because the sides don't exist
+        else{
+          temptotal += image[i][j];
+        }
   } 
-
+  }
 }
 
 
