@@ -115,8 +115,18 @@ void sumArray(int image[700][700], int sum[][700], int row, int col){
         else{
           temptotal += image[i][j];
         }
+        sum[i][j] = temptotal;
   } 
   }
+  //debug print
+  for(int i = 0; i < row; i++){
+      for(int j = 0; j < col; j++){
+        cout << sum[i][j] << " ";
+    }
+   std::cout << std::endl;
+  } 
+
+
 }
 
 
@@ -142,7 +152,7 @@ int main () {
     // TODO: Read the image.pgm
     readImage(filename, image, col, row, maxVal, p_val);
 
-    
+    std::cout << std::endl; 
     // TODO: Find the sum of pixels
     sumArray(image, sum, row, col);
     
