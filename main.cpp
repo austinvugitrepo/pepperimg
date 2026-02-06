@@ -102,19 +102,63 @@ void sumArray(int image[700][700], int sum[][700], int row, int col){
           // if left does not go out of bounds (not further then element 0)
         if(j - 1 >= 0) {
            temptotal += image[i][j - 1];
-        } // if right does not go out of bounds (not further then the array size)
-        else if(j + 1 < col) {
-           temptotal += image[i][j + 1];
-        } // if up does not go out of bounds
-        else if(i - 1 >= 0){
-          temptotal += image[i - 1][j];
-        } // if down does not go out bounds
-        else if(i + 1 < row){
-         temptotal += image[i + 1][j];
-        } //mirror because the sides don't exist
+        }
+        //mirror because the sides don't exist
         else{
           temptotal += image[i][j];
         }
+        // if right does not go out of bounds (not further then the array size)
+        if(j + 1 < col) {
+           temptotal += image[i][j + 1];
+        }
+        else {
+          temptotal += image[i][j];
+        }
+        // if up does not go out of bounds
+        if(i - 1 >= 0){
+          temptotal += image[i - 1][j];
+        }
+        else {
+          temptotal += image[i][j];
+        }
+        // if down does not go out bounds
+        if(i + 1 < row){
+         temptotal += image[i + 1][j];
+        }
+        else{
+          temptotal += image[i][j];
+        }
+
+      // if top left corner does not go out of bounds (not further then element 0)
+        if(j - 1 >= 0 && i - 1 >= 0) {
+           temptotal += image[i - 1][j - 1];
+        }
+        //mirror because the sides don't exist
+        else{
+          temptotal += image[i][j];
+        }
+        // if top right corner does not go out of bounds (not further then the array size)
+        if(j + 1 < col && i - 1 >= 0) {
+           temptotal += image[i - 1][j + 1];
+        }
+        else {
+          temptotal += image[i][j];
+        }
+        // if down left corner does not go out of bounds
+        if(i + 1 < row && j - 1 >= 0){
+          temptotal += image[i + 1][j - 1];
+        }
+        else {
+          temptotal += image[i][j];
+        }
+        // if down right corner does not go out bounds
+        if(i + 1 < row && j + 1 < col){
+         temptotal += image[i + 1][j + 1];
+        }
+        else{
+          temptotal += image[i][j];
+        }
+     
         sum[i][j] = temptotal;
   } 
   }
