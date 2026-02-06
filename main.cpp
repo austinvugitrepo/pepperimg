@@ -133,13 +133,24 @@ void sumArray(int image[700][700], int sum[][700], int row, int col){
         if(j - 1 >= 0 && i - 1 >= 0) {
            temptotal += image[i - 1][j - 1];
         }
-        //mirror because the sides don't exist
+        else if(j - 1 >= 0){ // if not satisifed but image[i][j] has a straight direction (not diagonal) neighbor use the neighbor
+          temptotal += image[i][j - 1];
+        }
+        else if(i - 1 >= 0){
+          temptotal += image[i - 1][j];
+        }
         else{
           temptotal += image[i][j];
         }
         // if top right corner does not go out of bounds (not further then the array size)
         if(j + 1 < col && i - 1 >= 0) {
            temptotal += image[i - 1][j + 1];
+        }
+        else if(j + 1 < col){
+          temptotal += image[i][j + 1];
+        }
+        else if(i - 1 >= 0){
+          temptotal += image[i - 1][j];
         }
         else {
           temptotal += image[i][j];
@@ -148,12 +159,24 @@ void sumArray(int image[700][700], int sum[][700], int row, int col){
         if(i + 1 < row && j - 1 >= 0){
           temptotal += image[i + 1][j - 1];
         }
+        else if(j - 1 >= 0){
+          temptotal += image[i][j - 1];
+        }
+        else if(i + 1 < row){
+          temptotal += image[i + 1][j];
+        }
         else {
           temptotal += image[i][j];
         }
         // if down right corner does not go out bounds
         if(i + 1 < row && j + 1 < col){
          temptotal += image[i + 1][j + 1];
+        }
+        else if(j + 1 < col){
+          temptotal += image[i][j + 1];
+        }
+        else if(i + 1 < row){
+          temptotal += image[i + 1][j];
         }
         else{
           temptotal += image[i][j];
