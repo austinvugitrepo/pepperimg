@@ -45,7 +45,7 @@ void readImage(char filename[700], int image[700][700], int &col, int &row, int 
   if(strcmp(filename, "sample_image.pgm") == 0){ //strcmp compares filename with string (from C)
    for(int i = 0; i < row; i++){
       for(int j = 0; j < col; j++){
-        cout << image[i][j] << " ";
+        std::cout << image[i][j] << " ";
     }
    std::cout << std::endl;
   } 
@@ -188,7 +188,7 @@ void sumArray(int image[700][700], int sum[][700], int row, int col){
   //debug print
   for(int i = 0; i < row; i++){
       for(int j = 0; j < col; j++){
-        cout << sum[i][j] << " ";
+        std::cout << sum[i][j] << " ";
     }
    std::cout << std::endl;
   } 
@@ -197,9 +197,24 @@ void sumArray(int image[700][700], int sum[][700], int row, int col){
 }
 
 
-/*void averageArray(int sum[700][700], double avg[][700], int col, int row){
+void averageArray(int sum[700][700], double avg[][700], int col, int row){
 
-}*/
+  for(int i = 0; i < row; i++){
+    for(int j = 0; j < col; j++){
+       avg[i][j] = sum[i][j] / 8.0;
+
+    }
+  }
+  // debug print
+   for(int i = 0; i < row; i++){
+    for(int j = 0; j < col; j++){
+     std::cout << avg[i][j] << " ";
+    }
+    std::cout << std::endl;
+  }
+
+
+}
 
 /*void pepperImage(int image[700][700], double avg[][700], int col, int row){
     
@@ -208,12 +223,14 @@ void sumArray(int image[700][700], int sum[][700], int row, int col){
 int main () {
    
     char filename[700]; //added size
-    int image[700][700];
-    int col;
-    int row;
+    static int image[700][700];
+    int col = 0;
+    int row = 0;
     int maxVal;
     char p_val[700]; //added size
-    int sum[700][700]; //added size
+    // added static to deal with segmentation fault (too much memory on the stack)
+    static int sum[700][700]; //added size
+    static double avg[700][700]; //added size
     std::cout << "What is the name of the file (include file extension too.)" << std::endl;
     std::cin >> filename;       //grab filename for future use
     // TODO: Read the image.pgm
@@ -223,8 +240,10 @@ int main () {
     // TODO: Find the sum of pixels
     sumArray(image, sum, row, col);
     
+
+    std::cout << std::endl; 
     // TODO: Find the average of pixels
-    
+    averageArray(sum, avg, col, row); 
     // TODO: Pepper the image
     
     // TODO: Save the resulting image to peppered_image.pgm
