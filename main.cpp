@@ -216,9 +216,24 @@ void averageArray(int sum[700][700], double avg[][700], int col, int row){
 
 }
 
-/*void pepperImage(int image[700][700], double avg[][700], int col, int row){
-    
-}*/
+void pepperImage(int image[700][700], double avg[][700], int col, int row){
+    for(int i = 0; i < row; i++){
+      for(int j = 0; j < col; j++){
+         if(image[i][j] > avg[i][j]){
+           image[i][j] = 0;
+         } 
+      }
+    }
+
+   // debug print
+   for(int i = 0; i < row; i++){
+    for(int j = 0; j < col; j++){
+     std::cout << image[i][j] << " ";
+    }
+    std::cout << std::endl;
+  }
+
+}
 
 int main () {
    
@@ -243,9 +258,12 @@ int main () {
 
     std::cout << std::endl; 
     // TODO: Find the average of pixels
-    averageArray(sum, avg, col, row); 
+    averageArray(sum, avg, col, row);
+
+    std::cout << std::endl;
     // TODO: Pepper the image
-    
+    pepperImage(image, avg, col, row);
+       
     // TODO: Save the resulting image to peppered_image.pgm
     
     return 0;
