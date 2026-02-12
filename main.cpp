@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <cstring> //for strcmp
+#include <string> // for name changing file
 using namespace std;
 
 /************************************************************************************************************
@@ -71,10 +72,13 @@ void readImage(char filename[700], int image[700][700], int &col, int &row, int 
  *
  * return: no return values
  ************************************************************************************************************/
-/*void saveImage(char filename[], int pepper[700][700], int col, int row, int maxVal, char p_val[]){
-    
+void saveImage(char filename[], int pepper[700][700], int col, int row, int maxVal, char p_val[]){
+                             //convert C string to C++ string and assign it to new variable 
+    std::string pepperfile = string(filename);
+    //name change
+    pepperfile = "peppered_image.pgm";
     ofstream myImage;
-    myImage.open (filename);
+    myImage.open (pepperfile);
     
     cout << "p_val is " << p_val << endl;
     cout << "col is: " << col << endl;
@@ -94,7 +98,7 @@ void readImage(char filename[700], int image[700][700], int &col, int &row, int 
     myImage.close();
 
 }
-*/
+
 void sumArray(int image[700][700], int sum[][700], int row, int col){
   for(int i = 0; i < row; i++){ //tracking row
       for(int j = 0; j < col; j++){ //tracking element
@@ -246,6 +250,8 @@ int main () {
     // added static to deal with segmentation fault (too much memory on the stack)
     static int sum[700][700]; //added size
     static double avg[700][700]; //added size
+    static int pepper[700][700];
+
     std::cout << "What is the name of the file (include file extension too.)" << std::endl;
     std::cin >> filename;       //grab filename for future use
     // TODO: Read the image.pgm
@@ -265,7 +271,7 @@ int main () {
     pepperImage(image, avg, col, row);
        
     // TODO: Save the resulting image to peppered_image.pgm
-    
+    saveImage(filename, pepper, col, row, maxVal, p_val);
     return 0;
 }
 
