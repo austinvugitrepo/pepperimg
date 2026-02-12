@@ -250,7 +250,6 @@ int main () {
     // added static to deal with segmentation fault (too much memory on the stack)
     static int sum[700][700]; //added size
     static double avg[700][700]; //added size
-    static int pepper[700][700];
 
     std::cout << "What is the name of the file (include file extension too.)" << std::endl;
     std::cin >> filename;       //grab filename for future use
@@ -271,7 +270,7 @@ int main () {
     pepperImage(image, avg, col, row);
        
     // TODO: Save the resulting image to peppered_image.pgm
-    saveImage(filename, pepper, col, row, maxVal, p_val);
+    saveImage(filename, image, col, row, maxVal, p_val);
     return 0;
 }
 
